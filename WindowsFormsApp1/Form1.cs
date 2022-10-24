@@ -17,9 +17,11 @@ namespace WindowsFormsApp1
         public Form1()
         {
             InitializeComponent();
-           
+            captcha = new Captcha(fontSize: 100);
+            pictureBox1.Image = captcha.GetCaptchaImage();
+            var s = Captcha.GetCaptchaString(new Random(), 5);
         }
-
+        Captcha captcha;
         private void button1_Click(object sender, EventArgs e)
         {
             Login();
@@ -27,12 +29,17 @@ namespace WindowsFormsApp1
 
         private void Login()
         {
-           var t = DataBase.runQuery($"Select * from reg where login ='{textBox1.Text}' and password = '{textBox2.Text}'");
-            if (t.Rows.Count == 1)
+            if (captcha.CheckAnswer(textBox3.Text))
             {
-                Hide();
-                new Menu().ShowDialog();
-                Close();
+
+
+                var t = DataBase.runQuery($"Select * from reg where login ='{textBox1.Text}' and password = '{textBox2.Text}'");
+                if (t.Rows.Count == 1)
+                {
+                    Hide();
+                    new Menu().ShowDialog();
+                    Close();
+                }
             }
         }
         

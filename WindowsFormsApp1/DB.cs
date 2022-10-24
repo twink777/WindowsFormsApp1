@@ -6,7 +6,7 @@ namespace WindowsFormsApp1
 {
     public class DataBase : IDisposable
     {
-        private SqlConnection sqlConnection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\armen\source\repos\WindowsFormsApp1\WindowsFormsApp1\DB.mdf;Integrated Security=True");
+        private SqlConnection sqlConnection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\IS2-19\Source\Repos\twink777\WindowsFormsApp1\WindowsFormsApp1\DB.mdf;Integrated Security=True");
         public SqlConnection GetConection { get { return sqlConnection; } }
         public void OpenConnection() { sqlConnection.Open(); }
         public void CloseConnection() { sqlConnection.Close(); }

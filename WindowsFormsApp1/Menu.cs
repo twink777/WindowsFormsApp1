@@ -21,7 +21,8 @@ namespace WindowsFormsApp1
         {
             if (textBox1.Text.Length >0)
             {
-                var qr = new QR(textBox1.Text);
+                var qr = new Barcode(textBox1.Text, 1);
+                pictureBox1.Image = qr.GetBitmap();
             }
         }
     }
